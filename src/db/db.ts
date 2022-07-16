@@ -96,6 +96,7 @@ const addItem = async <T extends keyof FirestoreCollectionPaths>(
   const firestore = getFirestore()
   const result = await addDoc(collection(firestore, collectionPath), item)
 
+  console.log("asdfasdf")
   return result // as FirestoreCollectionPaths[T]
 }
 

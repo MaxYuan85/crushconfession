@@ -39,8 +39,9 @@
   },
   "scripts": {
     "start-dev": "nodemon --exec yarn start",
-    "start": "concurrently \"yarn start:server\" \"react-scripts start\" -k",
-    "start:server": "firebase emulators:start --only firestore,auth",
+    "start": "react-scripts start",
+    "start:emulate": "concurrently \"yarn start:emulate_server\" \"react-scripts start\" -k",
+    "start:emulate_server": "firebase emulators:start --only firestore,auth",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
