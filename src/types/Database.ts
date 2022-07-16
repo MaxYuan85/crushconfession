@@ -10,8 +10,8 @@ namespace Database {
     id: string
     userEmail: string
     crushEmail: string
-    crushLinkedin: string
-    crushInstagram: string
+    crushLinkedin?: string
+    crushInstagram?: string
     message: string
     upvotes: number
   }
