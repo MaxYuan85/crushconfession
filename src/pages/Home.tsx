@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import formErrorMessages from '../utils/formErrorMessages'
 import { useState } from 'react'
 import Database from '../types/Database'
+import { ConfessForm } from '../components/ConfessForm'
 
 const Home = () => {
   const {
@@ -35,6 +36,7 @@ const Home = () => {
         }
       />
       <Wrapper>
+        <ConfessForm />
         <Typography paragraph variant='h5'>
           Welcome to your new app!
         </Typography>
