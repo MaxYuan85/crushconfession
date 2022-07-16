@@ -30,7 +30,7 @@
     "@types/css-mediaquery": "^0.1.1",
     "@types/jest": "^27.5.1",
     "css-mediaquery": "^0.1.2",
-    "firebase-tools": "^10.9.2",
+    "firebase-tools": "^11.2.2",
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
