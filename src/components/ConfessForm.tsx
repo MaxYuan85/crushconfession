@@ -1,9 +1,11 @@
-import { useRef, ReactNode, useState } from 'react'
-import { Menu, IconButton, Button, Modal, Typography, TextField, Grid } from '@mui/material'
-import MoreVertIcon from '@mui/icons-material/MoreVert'
+import { useState } from 'react'
+import { Button, Modal, TextField, Grid } from '@mui/material'
 import { Box } from '@mui/system'
 import { useForm } from 'react-hook-form';
-import formErrorMessages from '../utils/formErrorMessages';
+import formErrorMessages from '../utils/formErrorMessages'
+import db from '../db/db'
+import { v4 as uuidv4 } from 'uuid'
+import Database from '../types/Database';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -42,7 +44,16 @@ export const ConfessForm = () => {
       >
         <form
           onSubmit={handleSubmit(vals => {
-            console.log(vals);
+            const confession: Database.Confession = {
+              ...vals,
+              id: uuidv4(),
+              upvotes: 0,
+            }
+
+            db.addItem(
+              'confessions',
+              confession,
+            )
             reset();
             handleClose();
           })}
