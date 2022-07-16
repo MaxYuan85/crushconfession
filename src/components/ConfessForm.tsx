@@ -44,6 +44,7 @@ export const ConfessForm = () => {
           onSubmit={handleSubmit(vals => {
             console.log(vals);
             reset();
+            handleClose();
           })}
         >
           <Box sx={style}>
