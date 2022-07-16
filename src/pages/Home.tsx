@@ -9,7 +9,10 @@ import formErrorMessages from '../utils/formErrorMessages'
 import { useState, useEffect } from 'react'
 import Database from '../types/Database'
 import { ConfessForm } from '../components/ConfessForm'
+
 import db from '../db/db'
+import { SignInButton } from '../components/SignInButton'
+import { SignOutButton } from '../components/SignOutButton'
 
 const Home = () => {
   const {
@@ -95,6 +98,9 @@ const Home = () => {
             Submit
           </Button>
         </form>
+
+        <SignInButton />
+        <SignOutButton />
       </Box>
     </>
   )

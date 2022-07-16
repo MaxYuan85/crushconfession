@@ -14,6 +14,8 @@ const App = () => {
   useEffect(
     () =>
       onAuthStateChanged(getAuth(), resultUser => {
+        const username = resultUser ? resultUser.displayName : 'Not logged in!';
+        console.log(username);
         setSession({
           isAuthenticating: false,
           user: resultUser && {
