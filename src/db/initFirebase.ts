@@ -30,9 +30,9 @@ const initFirebase = async () => {
     const auth = getAuth(app)
 
     if (process.env.NODE_ENV !== 'production') {
-      connectAuthEmulator(auth, 'http://localhost:9099')
-      connectFirestoreEmulator(firestore, 'localhost', 8080)
-      enableMultiTabIndexedDbPersistence(firestore)
+      // connectAuthEmulator(auth, 'http://localhost:9099')
+      // connectFirestoreEmulator(firestore, 'localhost', 8080)
+      // enableMultiTabIndexedDbPersistence(firestore)
       /**
        * The following code logins the user automatically to speed up development.
        * For this to work you first need to create a user and then run the command
