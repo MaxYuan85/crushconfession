@@ -9,6 +9,7 @@ import { ConfessForm } from '../components/ConfessForm'
 import db from '../db/db'
 import { SignInButton } from '../components/SignInButton'
 import { SignOutButton } from '../components/SignOutButton'
+import { Leaderboard } from '../components/Leaderboard/Leaderboard'
 
 const Home = () => {
   const {
@@ -55,6 +56,11 @@ const Home = () => {
           ⬇️ See the Leaderboards ⬇️
         </Typography>
       </Box>
+
+      <Box style={{ backgroundColor: "rgb(255, 218, 117)", width: '100vw', padding: '30px' }}>
+        <Leaderboard/>
+      </Box>
+
       <Box style={{ backgroundColor: "rgb(250,211,152)", height: '100vh', width: '100vw', padding: '30px' }}>
         <ConfessForm />
         <Box mt={6}>
