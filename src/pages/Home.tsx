@@ -33,7 +33,8 @@ const Home = () => {
 
   return (
     <>
-      <Box style={{ backgroundColor: "rgb(152,190,250)", height: '100vh', width: '100vw' }}>
+      // TODO: Use actual image from ./public
+      <Box style={{ backgroundColor: "rgb(152,190,250)", height: '100vh', width: '100vw', backgroundImage: 'url(https://images.unsplash.com/photo-1506669318200-6790d9b4c014)', backgroundSize: 'cover'}}>
         <Grid
           container
           direction="column"
@@ -41,18 +42,18 @@ const Home = () => {
           alignItems="center"
           style={{ height: '100vh' }}
         >
-          <Typography paragraph variant='h1' align='center'>
+          <Typography paragraph variant='h1' align='center' style={{fontWeight: "bold"}}>
             College Crush <br></br>Confessions
           </Typography>
 
-          <Box style={{ paddingTop: '10vh', marginLeft: 'auto', marginRight: 'auto', width: '80%' }}>
+          <Box style={{ paddingTop: '10vh', marginLeft: 'auto', marginRight: 'auto', width: '80%', maxWidth: '800px' }}>
             <Typography paragraph variant='body2' align='center'>
-              Have a crush? Too scared to confess? Put down their “.edu” email address and get notified <i>only if they put yours down too</i>! <b>Completely anonymous, completely confidential</b>.
+              Have a crush? Too scared to confess? Put down their “.edu” email address and get notified <i>only if they put yours down too</i>, <b>completely confidentially!</b>
             </Typography>
           </Box>
         </Grid>
 
-        <Typography paragraph align='center' style={{ position: 'absolute', bottom: '0', fontSize: '18pt', left: '0', right: '0' }}>
+        <Typography paragraph variant='body2' align='center' style={{ position: 'absolute', bottom: '0', left: '0', right: '0' }}>
           ⬇️ See the Leaderboards ⬇️
         </Typography>
       </Box>
