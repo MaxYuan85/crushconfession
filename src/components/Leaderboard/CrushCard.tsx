@@ -9,8 +9,8 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export interface CrushCommentInterface {
   id: string
-  comment: string
-  likes: number
+  message: string
+  upvotes: number
 }
 
 export interface CrushCardInterface {
@@ -22,13 +22,13 @@ export interface CrushCardInterface {
 }
 
 export const CrushComment = (props: CrushCommentInterface) => {
-  const { id, comment, likes } = props;
+  const { id, message, upvotes } = props;
 
   return (
     <Grid container wrap="nowrap" alignItems="center">
       <Grid item sx={{ mb: 1, mt: 1 }}>
         <Typography component="div">
-          {comment}
+          {message}
         </Typography>
       </Grid>
       <Grid item>
@@ -76,8 +76,8 @@ export const CrushCard = (props: CrushCardInterface) => {
               return (
                 <CrushComment
                   id={confession.id}
-                  comment={confession.comment}
-                  likes={confession.likes}
+                  message={confession.message}
+                  upvotes={confession.upvotes}
                 />
               )
             })

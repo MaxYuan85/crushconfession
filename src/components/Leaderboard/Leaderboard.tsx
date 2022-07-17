@@ -1,76 +1,88 @@
 import Grid from '@mui/material/Grid';
+import { useEffect, useState } from 'react';
+import db from '../../db/db';
+import Database from '../../types/Database';
 import { CrushCard } from './CrushCard';
+const testData = [
+  {
+    email: 'maryjane@email.com',
+    crushCount: 5,
+    instagramLink: 'insta.com',
+    confessions: [
+      {
+        id: 'asdf',
+        comment: 'you are the best love lve love',
+        likes: 2,
+      },
+      {
+        id: 'asdf',
+        comment: 'you are the best love lve love',
+        likes: 2,
+      },
+      {
+        id: 'asdf',
+        comment: 'you are the best love lve love',
+        likes: 2,
+      }
+    ]
+  },
+  {
+    email: 'maryjane@email.com',
+    crushCount: 5,
+    instagramLink: 'insta.com',
+    confessions: [
+      {
+        id: 'asdf',
+        comment: 'you are the best love lve love',
+        likes: 2,
+      },
+      {
+        id: 'asdf',
+        comment: 'you are the best love lve love',
+        likes: 2,
+      },
+      {
+        id: 'asdf',
+        comment: 'you are the best love lve love',
+        likes: 2,
+      }
+    ]
+  },
+  {
+    email: 'maryjane@email.com',
+    crushCount: 5,
+    instagramLink: 'insta.com',
+    confessions: [
+      {
+        id: 'asdf',
+        comment: 'you are the best love lve love',
+        likes: 2,
+      },
+      {
+        id: 'asdf',
+        comment: 'you are the best love lve love',
+        likes: 2,
+      },
+      {
+        id: 'asdf',
+        comment: 'you are the best love lve love',
+        likes: 2,
+      }
+    ]
+  }
+]
 
 export const Leaderboard = () => {
-  const testData = [
-    {
-      email: 'maryjane@email.com',
-      crushCount: 5,
-      instagramLink: 'insta.com',
-      confessions: [
-        {
-          id: 'asdf',
-          comment: 'you are the best love lve love',
-          likes: 2,
-        },
-        {
-          id: 'asdf',
-          comment: 'you are the best love lve love',
-          likes: 2,
-        },
-        {
-          id: 'asdf',
-          comment: 'you are the best love lve love',
-          likes: 2,
-        }
-      ]
-    },
-    {
-      email: 'maryjane@email.com',
-      crushCount: 5,
-      instagramLink: 'insta.com',
-      confessions: [
-        {
-          id: 'asdf',
-          comment: 'you are the best love lve love',
-          likes: 2,
-        },
-        {
-          id: 'asdf',
-          comment: 'you are the best love lve love',
-          likes: 2,
-        },
-        {
-          id: 'asdf',
-          comment: 'you are the best love lve love',
-          likes: 2,
-        }
-      ]
-    },
-    {
-      email: 'maryjane@email.com',
-      crushCount: 5,
-      instagramLink: 'insta.com',
-      confessions: [
-        {
-          id: 'asdf',
-          comment: 'you are the best love lve love',
-          likes: 2,
-        },
-        {
-          id: 'asdf',
-          comment: 'you are the best love lve love',
-          likes: 2,
-        },
-        {
-          id: 'asdf',
-          comment: 'you are the best love lve love',
-          likes: 2,
-        }
-      ]
+  const [confessions, setConfessions] = useState<Database.Confession[]>([])
+  useEffect(() => {
+    const fetchData = async () => {
+      return await db.query({ collection: 'confessions' });
     }
-  ]
 
+    fetchData().then((data) => {
+      setConfessions(data)
+    })
+  }, []);
   return (
     <Grid
       container
@@ -87,13 +99,13 @@ export const Leaderboard = () => {
       }}
     >
       {
-        testData.map(data => {
+        confessions.map(data => {
           return (
             <CrushCard
-              email={data.email}
-              crushCount={data.crushCount}
-              instagramLink={data.instagramLink}
-              confessions={data.confessions}
+              email={data.crushEmail}
+              crushCount={data.confessionMessages.length}
+              instagramLink={data.crushLinkedin}
+              confessions={data.confessionMessages}
             />
           )
         })
