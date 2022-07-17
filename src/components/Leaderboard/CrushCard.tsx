@@ -25,7 +25,7 @@ export const CrushComment = (props: CrushCommentInterface) => {
   const { id, message, upvotes } = props;
 
   return (
-    <Grid container wrap="nowrap" alignItems="center">
+    <Grid key={id} container wrap="nowrap" alignItems="center">
       <Grid item sx={{ mb: 1, mt: 1 }}>
         <Typography component="div">
           {message}
@@ -75,6 +75,7 @@ export const CrushCard = (props: CrushCardInterface) => {
             confessions.map(confession => {
               return (
                 <CrushComment
+                  key={confession.id}
                   id={confession.id}
                   message={confession.message}
                   upvotes={confession.upvotes}

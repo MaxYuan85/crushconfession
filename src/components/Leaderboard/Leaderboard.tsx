@@ -102,6 +102,7 @@ export const Leaderboard = () => {
         confessions.map(data => {
           return (
             <CrushCard
+              key={data.crushEmail}
               email={data.crushEmail}
               crushCount={data.confessionMessages.length}
               instagramLink={data.crushLinkedin}
