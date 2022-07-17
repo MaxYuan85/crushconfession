@@ -18,6 +18,34 @@ const style = {
   p: 4,
 };
 
+interface confessionSubmissionInterface { 
+  userEmail: string
+  crushEmail: string
+  crushInstagram?: string
+  crushLinkedin?: string
+  message: string 
+}
+
+const createConfessionEntry = (data: confessionSubmissionInterface) => {
+  const message: Database.ConfessionMessage = {
+    id: uuidv4(),
+    userEmail: data.userEmail,
+    userUUID: 'asdf',
+    message: data.message,
+    upvotes: 1,
+  }
+
+  const confession: Database.Confession = {
+    crushEmail: data.crushEmail,
+    crushLinkedin: data.crushLinkedin,
+    crushInstagram: data.crushInstagram,
+    confessionMessages: [message],
+  }
+
+  return confession
+} 
+
+
 export const ConfessForm = () => {
   const [open, setOpen] = useState(false);
   const {
@@ -25,7 +53,7 @@ export const ConfessForm = () => {
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm<{ userEmail: string, crushEmail: string, crushInstagram?: string, crushLinkedin?: string, message: string }>()
+  } = useForm<confessionSubmissionInterface>()
   const handleOpen = () => {
     setOpen(true);
   };
@@ -44,16 +72,8 @@ export const ConfessForm = () => {
       >
         <form
           onSubmit={handleSubmit(vals => {
-            const confession: Database.Confession = {
-              ...vals,
-              id: uuidv4(),
-              upvotes: 0,
-            }
-
-            db.addItem(
-              'confessions',
-              confession,
-            )
+            const entry = createConfessionEntry(vals);
+            db.upsertConfession(entry);
             reset();
             handleClose();
           })}

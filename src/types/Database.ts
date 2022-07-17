@@ -6,14 +6,19 @@ namespace Database {
     completed: boolean
   }
 
-  export type Confession = {
+  export type ConfessionMessage = {
     id: string
     userEmail: string
+    userUUID: string
+    message: string
+    upvotes: number
+  }
+
+  export type Confession = {
     crushEmail: string
     crushLinkedin?: string
     crushInstagram?: string
-    message: string
-    upvotes: number
+    confessionMessages: ConfessionMessage[]
   }
 }
 
