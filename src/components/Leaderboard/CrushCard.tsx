@@ -17,25 +17,25 @@ export const CrushCard = () => {
   const card = (
     <React.Fragment>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography variant="subtitle1" color="text.secondary" gutterBottom>
           Email
         </Typography>
         <Typography variant="h5" component="div">
           mary.jane@berkeley.edu
         </Typography>
-        <Typography sx={{ mt: 1.5 }} color="text.secondary">
+        <Typography sx={{ mt: 1.5 }} variant="subtitle1" color="text.secondary">
           Crush Count
         </Typography>
         <Typography variant="h5" component="div">
           7
         </Typography>
-        <Typography sx={{ mt: 1.5 }} color="text.secondary">
+        <Typography sx={{ mt: 1.5 }} variant="subtitle1" color="text.secondary">
           Social Media
         </Typography>
         <Typography variant="h5" component="div">
           instagram.com/maryjane
         </Typography>
-        <Typography sx={{ mt: 1.5 }} color="text.secondary">
+        <Typography sx={{ mt: 1.5 }} variant="subtitle1" color="text.secondary">
           Love Notes
         </Typography>
 
@@ -50,8 +50,8 @@ export const CrushCard = () => {
   );
 
   return (
-    <Grid item xs={4}>
-      <Card variant="outlined">{card}</Card>
+    <Grid item xs={12} md={6} lg={4}>
+      <Card variant="outlined" sx={{ borderRadius: '20px', padding: '10px', boxShadow: 3}}>{card}</Card>
     </Grid>
   );
   
