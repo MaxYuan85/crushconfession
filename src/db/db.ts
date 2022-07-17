@@ -1,3 +1,4 @@
+import assert from 'assert'
 import {
   collection,
   getFirestore,
@@ -14,8 +15,11 @@ import {
   Timestamp,
   FieldValue,
   updateDoc,
-  deleteDoc
+  deleteDoc,
+  DocumentReference,
+  QueryDocumentSnapshot
 } from 'firebase/firestore'
+import Database from '../types/Database'
 import FirestoreCollectionPaths from '../types/FirestoreCollectionPaths'
 
 const getById = async <T extends keyof FirestoreCollectionPaths>(
@@ -96,7 +100,6 @@ const addItem = async <T extends keyof FirestoreCollectionPaths>(
   const firestore = getFirestore()
   const result = await addDoc(collection(firestore, collectionPath), item)
 
-  console.log("asdfasdf")
   return result // as FirestoreCollectionPaths[T]
 }
 
@@ -117,12 +120,37 @@ const deleteItem = async <T extends keyof FirestoreCollectionPaths>(
   return await deleteDoc(doc(firestore, collectionPath, itemId))
 }
 
+const upsertConfession = async(confession: Database.Confession): Promise<Database.Confession> => {
+  const firestore = getFirestore()
+  const confessionsCollection = collection(firestore, 'confessions')
+  const crushEmail = confession.crushEmail
+  const query = firestoreQuery(
+    confessionsCollection,
+    where('crushEmail', '==', crushEmail)
+  )
+  const result = await getDocs(query);
+  assert(result.docs.length < 2);
+  let udpatedConfession = confession;
+  if (result.docs.length > 0) {
+    const data = result.docs[0].data();
+    udpatedConfession.crushInstagram = udpatedConfession.crushInstagram || data.crushInstagram;
+    udpatedConfession.crushLinkedin= udpatedConfession.crushLinkedin|| data.crushLinkedin;
+    udpatedConfession.confessionMessages = [...udpatedConfession.confessionMessages, ...data.confessionMessages];
+    await updateDoc(result.docs[0].ref, udpatedConfession);
+  } else {
+    await addDoc(confessionsCollection, udpatedConfession); 
+  }
+
+  return udpatedConfession;
+}
+
 const db = {
   getById,
   query,
   addItem,
   updateItem,
-  deleteItem
+  deleteItem,
+  upsertConfession,
 }
 
 export default db
