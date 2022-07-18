@@ -33,8 +33,7 @@ const Home = () => {
 
   return (
     <>
-      // TODO: Use actual image from ./public
-      <Box style={{ backgroundColor: "rgb(152,190,250)", height: '100vh', width: '100vw', backgroundImage: 'url(https://images.unsplash.com/photo-1506669318200-6790d9b4c014)', backgroundSize: 'cover'}}>
+      <Box style={{ backgroundColor: "rgb(152,190,250)", height: '100vh', width: '100vw', backgroundImage: "url(./sunset.png)", backgroundSize: 'cover'}}>
         <Grid
           container
           direction="column"
